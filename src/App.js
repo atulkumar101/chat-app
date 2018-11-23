@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { firebaseApp } from './firebase';
 
 import './App.css';
+import usericon from './Assets/download.jpg';
 
 class App extends Component {
 
@@ -10,7 +11,10 @@ class App extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: {
+        message: ''
+      }
     }
   }
 
@@ -25,11 +29,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+    <div className="App">
+      <div style={{margin: '20px 20px 20px 20px'}} className="Box-shadow Align-center">
+      <div>
+        <h4>Sign In To Your Account</h4>
+      </div>
       <div className="form-inline">
-      <h2>SignIn</h2>
-      
       <div className="form-group">
+      <div className="User-icon-big">
+        <img src={usericon} alt="downloadimage" height="240px" width="240px" />
+      </div>
         <input 
           className="form-control"
           type="text"
@@ -50,17 +59,17 @@ class App extends Component {
         >
           Sign In
         </button>
-        <button
-          className="btn btn-primary"
-          style={{margin: '5px'}}
-          type="button"
-        >
-          <Link style={{color: 'white'}} to = {'/forgot'}> Forgot Password </Link>
-        </button>
       </div>
       <div>{
-        // this.state.error.message
+        this.state.error.message
       }</div>
+      <button
+        className="btn btn-primary"
+        style={{margin: '5px'}}
+        type="button"
+      >
+        <Link style={{color: 'white'}} to = {'/forgot'}> Forgot Password </Link>
+      </button>
       <div>
           <button
             className="btn btn-primary"
@@ -83,7 +92,8 @@ class App extends Component {
           { this.check() }
           </div> */}
         </div>
-      </div>
+        </div>
+    </div>
     );
   }
 }
