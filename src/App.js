@@ -35,7 +35,7 @@ class App extends Component {
         <h4>Sign In To Your Account</h4>
       </div>
       <div className="form-inline">
-      <div className="form-group">
+      <div className="form-group Margin-left">
       <div className="User-icon-big">
         <img src={usericon} alt="downloadimage" height="240px" width="240px" />
       </div>
@@ -59,6 +59,14 @@ class App extends Component {
         >
           Sign In
         </button>
+        <button
+            className="btn btn-primary"
+            style={{margin: '5px'}}
+            type="button"
+            coo
+          >
+            <Link style={{color: 'white'}} to = {'/signup'}> Sign Up Instead </Link>
+          </button> 
       </div>
       <div>{
         this.state.error.message
@@ -71,14 +79,7 @@ class App extends Component {
         <Link style={{color: 'white'}} to = {'/forgot'}> Forgot Password </Link>
       </button>
       <div>
-          <button
-            className="btn btn-primary"
-            style={{margin: '5px'}}
-            type="button"
-            coo
-          >
-            <Link style={{color: 'white'}} to = {'/signup'}> Sign Up Instead </Link>
-          </button> 
+          
       </div>
           {/* <div>
               <input 
