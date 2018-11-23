@@ -17,3 +17,5 @@ class ChatComponent extends Component{
     )
   }
 }
+
+export default ChatComponent;
