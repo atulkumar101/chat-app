@@ -9,7 +9,7 @@ import { firebaseApp } from './firebase';
 
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import SignUp from './components/SignUp';
 
 import combineReducers from './reducers';
 import ChatComponent from './components/ChatComponent';
@@ -34,7 +34,7 @@ class RouteApp extends React.Component{
   componentDidMount(){
     firebaseApp.auth().onAuthStateChanged( user => {
       if(user) {
-          // console.log('user has signed in or up', user);
+          console.log('user has signed in or up', user);
           const { email } = user;
           // store.dispatch(logUser(email));
           // history.push('/app');
@@ -42,8 +42,6 @@ class RouteApp extends React.Component{
       } else {
           this.props.history.push('/')
           // console.log('user has signed out or still needs to sign in');
-          // history.push('/signin');
-          // BrowserHistory.replace('/signin');
       }
     } )
   }
@@ -52,6 +50,7 @@ class RouteApp extends React.Component{
     return (
       <Switch>
         <Route exact path="/" component={App} />
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/chats" component={ChatComponent} />
       </Switch>
     )

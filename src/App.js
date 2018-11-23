@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { firebaseApp } from './firebase';
 
 import './App.css';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  signIn() {
+    const { email, password } = this.state;
+    firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log("Error signing-in: ", errorMessage, errorCode);
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,16 +50,25 @@ class App extends Component {
         >
           Sign In
         </button>
-        <button>
-          <Link to = {'/forgot'}> Forgot Password </Link>
+        <button
+          className="btn btn-primary"
+          style={{margin: '5px'}}
+          type="button"
+        >
+          <Link style={{color: 'white'}} to = {'/forgot'}> Forgot Password </Link>
         </button>
       </div>
       <div>{
         // this.state.error.message
       }</div>
       <div>
-          <button>
-            <Link to = {'/signup'}> Sign Up Instead </Link>
+          <button
+            className="btn btn-primary"
+            style={{margin: '5px'}}
+            type="button"
+            coo
+          >
+            <Link style={{color: 'white'}} to = {'/signup'}> Sign Up Instead </Link>
           </button> 
       </div>
           {/* <div>
