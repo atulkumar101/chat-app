@@ -20,17 +20,17 @@ class App extends Component {
 
   signIn() {
     const { email, password } = this.state;
-    firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log("Error signing-in: ", errorMessage, errorCode);
-    });
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    .catch(error => {
+      this.setState({error})
+    })
+    // console.log('sign in complete');
   }
 
   render() {
     return (
     <div className="App">
-      <div style={{margin: '20px 20px 20px 20px'}} className="Box-shadow Align-center">
+      <div style={{margin: '20px 20px 20px 20px', minHeight: '250px'}} className="Box-shadow Align-center">
       <div>
         <h4>Sign In To Your Account</h4>
       </div>
@@ -63,7 +63,6 @@ class App extends Component {
             className="btn btn-primary"
             style={{margin: '5px'}}
             type="button"
-            coo
           >
             <Link style={{color: 'white'}} to = {'/signup'}> Sign Up Instead </Link>
           </button> 
@@ -76,7 +75,7 @@ class App extends Component {
         style={{margin: '5px'}}
         type="button"
       >
-        <Link style={{color: 'white'}} to = {'/forgot'}> Forgot Password </Link>
+        <Link style={{color: 'white'}} to = {'/resetpassword'}> Forgot Password </Link>
       </button>
       <div>
           

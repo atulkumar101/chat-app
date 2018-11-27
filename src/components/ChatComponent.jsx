@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
+import ChatSection from './ChatSection';
+import UserInfo from './UserInfo';
 import '../App.css'
 
 class ChatComponent extends Component{
@@ -11,22 +13,28 @@ class ChatComponent extends Component{
   }
 
   signOut() {
-    console.log('signing out');
+    // console.log('signing out');
     firebaseApp.auth().signOut();
-    console.log('sign out successful');
+    // console.log('sign out successful');
   }
 
   render(){
     return(
       <div className="App">
-        <button
-          className="btn btn-primary"
-          type="button"
-          style={{float: 'right'}}
-          onClick = { ()=> this.signOut() }
-        >
-          Sign Out
-        </button>
+        <div style={{margin: '20px 20px 20px 20px', minHeight: '250px'}} className="Box-shadow Align-center">
+          <button
+            className="btn btn-primary"
+            type="button"
+            style={{float: 'right'}}
+            onClick = { ()=> this.signOut() }
+          >
+            Sign Out
+          </button>
+
+          <UserInfo />
+          <ChatSection />
+
+        </div>
       </div>
     )
   }
